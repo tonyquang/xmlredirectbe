@@ -1,0 +1,16 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mysql"
+    url      = env("DATABASE_URL")
+}
+
+model XmlFile {
+    id          Int      @id @default(autoincrement())
+    originalUrl String   @unique
+    localPath   String   @unique
+    status      String   @default("downloaded")
+    createdAt   DateTime @default(now())
+}
